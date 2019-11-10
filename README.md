@@ -20,7 +20,7 @@ This uses AppleScript and automator to make it easy to export a web page or any 
 
 The print service can now be accessed from the standard macOS print window by clicking on the `PDF` menu button:
 
-![image-20191110203011866](/Users/uayeb/Documents/Computers/Mac/print_to_icloud_notes/pdf_menu_button.png)
+![PDF Menu Button Image](pdf_menu_button.png)
 
 This can be further automated by following [these instructions to set up a keyboard shortcut](https://www.macsparky.com/blog/2008/3/19/keyboard-shortcut-for-save-as-pdf-in-os-x.html) in system preferences.
 
