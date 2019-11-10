@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>444.7</string>
+	<key>AMApplicationVersion</key>
+	<string>2.8</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>on run {input, parameters}		set notesAccount to "iCloud"	set notesFolder to "Reading"		try		tell application "System Events"			set frontmostProcess to first process where it is frontmost			--			if frontmostProcess is "com.apple.automator.runner.xpc" then			if background only of frontmostProcess is true then				set visible of frontmostProcess to false				repeat while (frontmostProcess is frontmost)					delay 0.2				end repeat				set frontmostProcess to the first process where it is frontmost				--				set frontmost of frontmostProcess to true			end if			set theapp to the name of frontmostProcess		end tell				if the the name of frontmostProcess is "Google Chrome" then			tell application "Google Chrome"				set thewindow to window 1				set thetab to the active tab of thewindow				set thetitle to the title of thetab				set theurl to the URL of thetab			end tell		else			tell application theapp				set thetitle to the name of window 1				set theurl to "from application " &amp; theapp			end tell		end if	on error the error_message number the error_number		--		set app to current application		--try		--	set appname to (name of frontmost)		set the error_text to "Error: " &amp; the error_number &amp; ". " &amp; the error_message &amp; "
+		" &amp; (theapp)		display dialog the error_text buttons {"OK"} default button 1		return the error_text	end try		tell application "Notes"		tell account notesAccount			set thebody to "&lt;div&gt;" &amp; theurl &amp; "&lt;/div&gt;
+			&lt;div&gt;&lt;br&gt;&lt;/div&gt;"			set mynote to make new note at folder notesFolder with properties {name:thetitle, body:thebody}			make new attachment at mynote with data input		end tell	end tell	return parametersend run</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>BDEC74B5-21E6-4198-9ACA-6ECA3760A5E1</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>D2D52C01-58B0-4790-809C-D4B42379C774</string>
+				<key>UUID</key>
+				<string>E2C957B5-F21B-4384-B5B1-437191A71F12</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.000000:316.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.printPlugin</string>
+	</dict>
+</dict>
+</plist>
